@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div>
+    <h2>My Inspirations</h2>
+    <br>
+    <br>
+    <div class=garden-container>
+      {% for garden in g.user.gardens %}
+      <div class="garden-card">
+          <a href='/gardens/{{garden.id}}'>
+            {% if garden.plants[0] %}
+              <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+            {% else %}
+              <img src="/static/unknown-image.webp" class="grid-element">
+            {% endif %}
+              <div class="garden-name">{{garden.name}}</div>
+              <div class="garden-description">{{garden.description}}</div>
+          </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

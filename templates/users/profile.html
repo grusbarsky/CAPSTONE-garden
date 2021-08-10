@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class='user-details'>
+    <div class='details'>
+        <h1>{{user.username}}</h1>
+        <img src="{{ user.image_url }}" onerror='this.src="/static/7100-1_1.jpg"' width="30" height="30">
+        <form action="/follows/{{user.id}}">
+            <button>Follows</button>
+        </form>
+        {% if user.id == g.user.id %}
+            <form action="/users/profile/edit">
+                <button>Edit Profile</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+<h3>Gardens</h3>
+<div class='plant-container'>
+    {% for garden in user.gardens %}
+        <div class='plant-card'>
+            <a href='/gardens/{{garden.id}}'>
+                {% if garden.plants[0] %}
+                    <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+                {% else %}
+                    <img src="/static/unknown-image.webp" class="grid-element">
+                {% endif %}
+                <div class="garden-name">{{garden.name}}</div>
+                <div>{{garden.description}}</div>
+                {% if user.id == g.user.id %}
+                <form method="POST" action="/gardens/{{ garden.id }}/delete">
+                    <button class='dlt-btn'>X</button>
+                </form>
+                {% endif %}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+<h3>Plants</h3>
+<div class='plant-container'>
+    {% for plant in user.plants %}
+        <div class='plant-card'>
+            <a href='/plants/{{plant.id}}'>
+                <div class="image-wrapper">
+                    <img src="{{ plant.image }}" alt="">
+                    <div class="garden-name">{{plant.name}}</div>
+                </div>
+                {% if user.id == g.user.id %}
+                <form name='remove-save' href='/plants/{{plant.id}}/save'>
+                    <button class='dlt-btn'>X</button>
+                </form>
+                {% endif %}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+    
+<h3>Inspirations</h3>
+<div class='plant-container'>
+    {% for garden in g.user.gardens %}
+        <div class='plant-card'>
+            <div class="garden-card">
+                <a href='/gardens/{{garden.id}}'>
+                    {% if garden.plants[0] %}
+                    <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+                    {% else %}
+                    <img src="/static/unknown-image.webp" class="grid-element">
+                    {% endif %}
+                    <div class="garden-name">{{garden.name}}</div>
+                    <div class="garden-description">{{garden.description}}</div>
+                    {% if user.id == g.user.id %}
+                    <form action='/gardens/{{garden.id}}/delete-save'> 
+                        <button class='dlt-btn'>X</button>
+                    </form>
+                {% endif %}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

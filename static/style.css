@@ -1,0 +1,486 @@
+html{
+  background-image: url("../../static/back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 5%;
+  height: 100%;
+}
+
+
+body{
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: absolute;
+  height: 90%;
+  width: 90%;
+  border-radius: 10px;
+  border-style: solid;
+  background: white;
+  position: fixed;
+}
+
+.body-contents{
+  margin: auto;
+  top: 30%;
+  bottom:2%;
+  position:fixed;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+a{
+  color: black;
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+h3{
+  margin-left: 2%;
+  font-size: 150%;
+}
+
+/* New Account */
+#new-account{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -125px;
+  border-radius: 8px;
+  border-style: solid;
+  text-align: center;
+}
+
+/* login */
+
+#login{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -125px;
+  border-radius: 8px;
+  border-style: solid;
+}
+
+#login-container{
+  text-align: center;
+}
+
+.form-control{
+  margin: 10px 50px 10px 50px;
+}
+
+#account-button{
+  margin-bottom: 40px;
+}
+
+/* Follows */
+.follows-card{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+}
+
+.follows-card a img{
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.follow-name{
+  position: relative;
+  text-align: center;
+  margin-right: auto;
+  color: black;
+  font-size: 20px;
+  text-shadow: 0px 0px 1px black;
+}
+
+
+.user-container{
+  margin-right: 75px;
+  margin-left: 75px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 50px;
+  text-align: center;
+}
+
+/* weather */
+#current-weather-container{
+  margin: auto;
+  text-align: center;
+}
+
+.weather-subheader{
+  margin: auto;
+  text-align: center;
+}
+
+#weather-header{
+  margin: auto;
+  text-align: center;
+}
+
+#forecast-container{
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+/* plant-details */
+
+.plant-detail-container{
+  position: absolute;
+}
+.plant-detail-img{
+  position: relative;
+  width: 25px;
+  height: 25%;
+  border-radius: 2px;
+}
+
+/* search bar */
+select {
+  width: 10%;
+  padding: 3px 3px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+/* garden-cards */
+.garden-card{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 250px;
+  width: 200px;
+}
+
+.garden-card a img{
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+
+.garden-name{
+  position: relative;
+  text-align: center;
+  margin-right: auto;
+  color: black;
+  font-size: 20px;
+  text-shadow: 0px 0px 1px black;
+}
+
+
+.garden-container{
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 25px;
+  text-align: center;
+}
+/* plant-cards */
+.plant-card{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 250px;
+  width: 200px;
+}
+
+.plant-card a img{
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+
+.plant-name{
+  position: relative;
+  text-align: center;
+  margin-right: auto;
+  color: black;
+  font-size: 20px;
+  text-shadow: 0px 0px 1px black;
+}
+
+
+.plant-container{
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 25px;
+  text-align: center;
+}
+
+/* Nav bar links */
+nav .primary-navigation{
+    margin: 0 auto;
+    display: block;
+    padding: 120px 0 0 0;  
+    text-align: center;
+    font-size: 16px;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 auto;
+    border-left: 2px solid lightskyblue;
+    border-right: 2px solid lightskyblue;
+    display: inline-block;
+    padding: 0 30px;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    font-family: arvo;
+}
+
+nav li a {
+  color: black;
+}
+
+nav li a:hover {
+  color: lightgreen;
+}
+
+nav li:hover {
+  cursor: pointer;
+}
+
+nav ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding-left: 0;
+  left: 0;
+  display: none;
+  background: white;
+}
+
+nav ul li:hover > ul,
+nav ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  min-width: 250px;
+  text-align: left;
+  padding-top: 20px;
+  box-shadow: 0px 3px 5px -1px #ccc;
+}
+
+nav ul li ul li {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+  border-style: none;
+}
+
+nav ul li ul li a:hover {
+  padding-left: 10px;
+  border-left: 2px solid lightskyblue;
+  transition: all 0.3s ease;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+  color: green;
+}
+
+ ul li ul li a { transition: all 0.5s ease; }
+
+/* user links in nav bar */
+#user-link{
+  height: 15%;
+  width: 10%;
+  margin-top: 1%;
+  margin-left: 90%;
+  position: absolute;
+}
+
+nav ul{
+  width: 100%;
+  padding: 0px;
+  margin: auto;
+}
+
+/* logo nav bar link */
+
+#logo-container{
+  margin: auto;
+}
+#logo{
+  font-size: 30px;
+  margin: auto;
+  color: darkgreen;
+}
+
+#user-image{
+  border-radius: 10%;
+  width: 50%;
+  height: 50%;
+}
+
+nav{
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  align-items: baseline;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.break{
+  flex-basis: 100%;
+  height: 0;
+}
+
+#global_search_form{
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+select{
+  width: 5%;
+}
+
+/* buttons */
+
+#remove-save{
+  position: inline-block;
+}
+
+.btn{
+  margin-bottom:20px;
+}
+
+button{
+  display: inline-block;
+  padding:5px 5px;
+  margin:2px 5px 5px 2px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:400;
+  color:#FFFFFF;
+  background-color:green;
+  box-shadow:1px 1px 1px black;
+  text-align:center;
+  position:relative;
+  }
+
+
+  input[type=submit]{
+    display: inline-block;
+    padding:5px 5px;
+    margin:2px 5px 5px 2px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:400;
+    color:#FFFFFF;
+    background-color:green;
+    box-shadow:1px 1px 1px black;
+    text-align:center;
+    position:relative;
+  }
+
+  #home-buttons{
+    text-align: center;
+  }
+
+
+  /* input boxes */
+
+  input[type=text]{
+    border: 0;
+    border-bottom: 2px solid black;
+  }
+
+  input[type=password]{
+    border: 0;
+    border-bottom: 2px solid black;
+  }
+
+  select {
+    width: 6%;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+  }
+
+  #global-search{
+    width: 20%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 6px 10px 6px 20px;
+  }
+
+  /* details */
+
+  .details img{
+    height: 100px;
+    width: 100px;
+    border-radius: 5%;
+  }
+
+  .garden-details div{
+    text-align: center;
+  }
+
+  .plant-details div{
+    text-align: center;
+  }
+
+  .user-details div{
+    text-align: center;
+  }
+
+  .details{
+    margin-bottom: 5%;
+  }
+
+  .plant-search-form{
+    text-align: left;
+    align-content: left;
+    justify-content: left;
+  }

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{user.username}}'s Follows</h2>
+<div id=user-container>
+    {% for follow in follows %}
+    <div class="follows-card">
+        <a href='/users/{{follow.id }}'>
+            <div class="follow-name">{{follow.username}}</div>
+            <img src="{{ follow.image_url }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+        </a>
+        {% if g.user %}
+        {% if g.user.is_following(follow) %}
+          <form method="POST" action="/follows/remove/{{ follow.id }}">
+            <button class="btn btn-primary btn-sm">Unfollow</button>
+          </form>
+        {% else %}
+          <form method="POST"
+                action="/follows/add/{{ follow.id }}">
+            <button class="btn btn-outline-primary btn-sm">Follow</button>
+          </form>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="static/gardens.js"></script>
+</head>
+<body>
+<!-- nav bar -->
+        <nav role="navigation" class="primary-navigation">
+          <div id=logo-container>
+            <a id='logo' href="/">
+              <h1>Virtual Garden</h1>
+            </a>
+          </div>
+          {% if request.endpoint != None %}
+          {% endif %}
+          {% if not g.user %}
+          <ul>
+            <li><a href="/signup">Sign up</a></li>
+            <li><a href="/login">Log in</a></li>
+          </ul>
+          {% else %}
+          <div id='user-link'>
+            <a href="/users/{{g.user.id}}">
+              <img id='user-image' src="{{ g.user.image_url }}" onerror='this.src="/static/7100-1_1.jpg"' width="30" height="30">
+              <div id='username-link'>{{g.user.username}}</div>
+            </a>
+            <a id='logout-link' href="/logout">Logout</a>
+          </div>
+            <ul>
+              <li><a href="/gardens">My Gardens</a></li>
+              <li><a href="/plants">My Plants</a></li>
+              <li><a href="/gardens/save/show">My Inspirations</a></li>
+              <li><a href="/weather">Local Weather</a></li>
+            </ul>
+            <div class='break'></div>
+            <br>
+            <form method="POST" id="global_search_form" action='/search' method='GET'>
+              <input type="text" id="global-search" name="global-search" placeholder='Search...'>
+              <select id="search" name="options" form="global_search_form">
+                <option value="Plants">Plants</option>
+                <option value="Users">Users</option>
+              </select>
+              <button type='submit' href="/search">Search</button>
+            </form>
+          {% endif %}
+        </nav>
+        <br>
+        <br>
+        <br>
+
+  <div class='body-contents'>
+    <div class="container">
+      {% for category, message in get_flashed_messages(with_categories=True) %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>

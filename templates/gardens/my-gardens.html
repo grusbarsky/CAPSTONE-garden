@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div>
+    <h2>My Gardens</h2>
+
+    <div class='plant-search=form'>
+      <form method="POST" id="plant_search_form">
+        {{ form.hidden_tag() }}
+  
+        {% for field in form if field.widget.input_type != 'hidden' %}
+          {% for error in field.errors %}
+            <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+          {{ field(placeholder=field.label.text, class="form-control") }}
+        {% endfor %}
+        <button href="/gardens/create">Add</button>
+      </form>
+    </div>
+    <br>
+    <br>
+    <div class=garden-container>
+      {% for garden in gardens %}
+      <div class="garden-card">
+          <a href='/gardens/{{garden.id}}'>
+            {% if garden.plants[0] %}
+              <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+            {% else %}
+            <img src="/static/unknown-image.webp" class="grid-element">
+            {% endif %}
+              <div class="garden-name">{{garden.name}}</div>
+              <div class="garden-description">{{garden.description}}</div>
+          </a>
+      </div>
+      {% endfor %}
+    </div>
+    
+  </div>
+{% endblock %}

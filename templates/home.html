@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id='home-buttons-container'>
+        <div id='home-buttons'>
+            <form action='/' method='POST'>
+                <input type="submit" name="home-plants" value="Plants">
+                <input type="submit" name="home-gardens" value="Gardens">
+           </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class='plant-container'>
+        {% for plant in plants %}
+        <div class="plant-card">
+            <a href='/plants/{{plant.id}}'>
+                <img src="{{ plant.image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+                <div class="plant-name">{{plant.name}}</div>
+            </a>
+        </div>
+        {% endfor %}
+        {% for garden in gardens %}
+        <div class="plant-card">
+            <a href='/gardens/{{garden.id}}'>
+                {% if garden.plants[0] %}
+                    <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"'>
+                {% else %}
+                    <img src="/static/unknown-image.webp" class="grid-element">
+                {% endif %}
+                <div>{{garden.name}}</div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

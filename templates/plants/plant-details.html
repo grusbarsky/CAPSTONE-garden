@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class='plant-details'>
+    <div class='details'>
+        <img class='plant-detail-img' src={{ plant.image }}>
+        <br>
+        <div>Name: {{plant.name}}</div>
+        <br>
+        <div>Binomial name: {{plant.binomial_name}}</div>
+        <br>
+        <div>Description: {{plant.description}}</div>
+        <br>
+        <div>Sun Requirements: {{plant.sun_requirements}}</div>
+        <br>
+        <div>Growing Method: {{plant.growing_method}}</div>
+        {% if g.user %}
+        {% if g.user.is_saved(plant.id) %}
+            <form method="POST" name='remove-save' action='/plants/{{plant.id}}/delete'>
+                <button>Remove from Saved</button>
+            </form>
+        <!-- if g.user has plant saved: unsave button, add to garden dropdown -->
+        {% else %}
+            <form method="POST" name='save' action='/plants/{{plant.id}}/save'>
+                <button>Save</button>
+            </form>
+        {% endif %}
+        <form method='POST' action='/plants/{{plant.id}}/add-plant'>
+            {{form.hidden_tag()}}
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                {{field.label}}
+                {{field}}
+            {% endfor %}
+            <button>Add To Garden</button>
+        </form>
+        <!-- elif save button and add garden to dropdown -->
+    {% endif %}
+    </div>
+
+</div>
+{% endblock %}

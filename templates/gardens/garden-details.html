@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>{{garden.name}}</h2>
+<div class='garden-details'>
+    <div class='details'>
+            {% if garden.plants[0] %}
+              <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+            {% else %}
+              <img src="/static/unknown-image.webp" class="grid-element">
+            {% endif %}
+        <div>{{garden.description}}</div>
+        {% if garden.user_id != g.user.id %}
+            {% if g.user.is_saved_garden(garden.id) %}
+                <form action='/gardens/{{garden.id}}/delete-save'> 
+                    <button>Remove Inspiration</button>
+                </form>
+            {% else %}
+                <form action='/gardens/{{garden.id}}/save'> 
+                    <button>Add Inspiration</button>
+                </form>
+            {% endif %}
+        {% else %}
+            <form method="POST" action="/gardens/{{ garden.id }}/delete">
+                <button>Delete Garden</button>
+            </form>
+        {% endif %}
+
+    </div>
+    <div class='plant-container'>
+        {% for plant in garden.plants %}
+        <div class="plant-card">
+            <a href='/plants/{{plant.name}}'>
+                <img src="{{ plant.image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
+                <div class="plant-name">{{plant.name}}</div>
+                {% if garden.user_id == g.user.id %}
+                    <form action='/plants/{{plant.id}}/{{garden.id}}/delete-plant'>
+                        <button class='dlt-btn'>X</button>
+                    </form>
+                {% endif %}
+            </a>
+        </div>
+        {% endfor %}
+      </div>
+</div>
+
+
+{% endblock %}
