@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+    <br>
     <div id='home-buttons-container'>
         <div id='home-buttons'>
             <form action='/' method='POST'>
-                <input type="submit" name="home-plants" value="Plants">
-                <input type="submit" name="home-gardens" value="Gardens">
+                <input class='home-buttons' type="submit" name="home-plants" value="Plants">
+                <input  class='home-buttons' type="submit" name="home-gardens" value="Gardens">
            </form>
         </div>
     </div>
-    <br>
-    <br>
     <div class='plant-container'>
         {% for plant in plants %}
         <div class="plant-card">

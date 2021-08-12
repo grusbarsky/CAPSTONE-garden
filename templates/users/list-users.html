@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
   {% if users|length == 0 %}
-    <h3>Sorry, no users found</h3>
+    <h3 class='sorry'>Sorry, no users found</h3>
   {% else %}
           {% for user in users %}
 

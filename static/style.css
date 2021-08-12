@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&family=Roboto:wght@300&display=swap');
+
 html{
   background-image: url("../../static/back.jpg");
   background-repeat: no-repeat;
@@ -19,11 +22,13 @@ body{
   border-style: solid;
   background: white;
   position: fixed;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
 }
 
 .body-contents{
   margin: auto;
-  top: 30%;
+  top: 35%;
   bottom:2%;
   position:fixed;
   overflow-y:scroll;
@@ -34,6 +39,11 @@ body{
 
 a{
   color: black;
+}
+
+.sorry{
+  text-align: center;
+  width: 300px;
 }
 
 h2{
@@ -48,10 +58,7 @@ h3{
 
 /* New Account */
 #new-account{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -100px 0 0 -125px;
+  position: relative;
   border-radius: 8px;
   border-style: solid;
   text-align: center;
@@ -60,10 +67,7 @@ h3{
 /* login */
 
 #login{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -100px 0 0 -125px;
+  position: relative;
   border-radius: 8px;
   border-style: solid;
 }
@@ -73,11 +77,7 @@ h3{
 }
 
 .form-control{
-  margin: 10px 50px 10px 50px;
-}
-
-#account-button{
-  margin-bottom: 40px;
+  margin: 0px 50px 10px 50px;
 }
 
 /* Follows */
@@ -240,6 +240,7 @@ select {
 }
 
 /* Nav bar links */
+
 nav .primary-navigation{
     margin: 0 auto;
     display: block;
@@ -254,11 +255,12 @@ nav ul li {
     border-left: 2px solid lightskyblue;
     border-right: 2px solid lightskyblue;
     display: inline-block;
-    padding: 0 30px;
+    padding: 0 20px;
     position: relative;
     text-decoration: none;
     text-align: center;
-    font-family: arvo;
+    font-weight: 900;
+    font-family: "Montserrat";
 }
 
 nav li a {
@@ -266,7 +268,7 @@ nav li a {
 }
 
 nav li a:hover {
-  color: lightgreen;
+  color: darkgreen;
 }
 
 nav li:hover {
@@ -337,12 +339,26 @@ nav ul{
 /* logo nav bar link */
 
 #logo-container{
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  padding: 0px;
+  height: 60px;
 }
 #logo{
-  font-size: 30px;
-  margin: auto;
-  color: darkgreen;
+  position: relative;
+  display: block;
+  text-align: center;
+  margin-bottom: 0px;
+  padding: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size:60px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+  text-shadow: 4px 4px green, 8px 8px lightskyblue;
+  font-family: sans-serif;
 }
 
 #user-image{
@@ -387,19 +403,38 @@ select{
 
 button{
   display: inline-block;
-  padding:5px 5px;
-  margin:2px 5px 5px 2px;
-  border-radius: 3px;
-  box-sizing: border-box;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:400;
-  color:#FFFFFF;
-  background-color:green;
-  box-shadow:1px 1px 1px black;
-  text-align:center;
-  position:relative;
-  }
+  width: 130px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Montserrat";
+  color: white;
+  letter-spacing: 1px;
+  padding: 5px 25px 5px;
+  margin: 5px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+button::after {
+  content: "";
+  background-color: green;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 3px;
+  left: 3px;
+  transition: 0.2s;
+}
+
+button:hover::after {
+  top: 0px;
+  left: 0px;
+}
 
 
   input[type=submit]{
@@ -409,7 +444,7 @@ button{
     border-radius: 3px;
     box-sizing: border-box;
     text-decoration:none;
-    font-family:'Roboto',sans-serif;
+    font-family: "Montserrat";
     font-weight:400;
     color:#FFFFFF;
     background-color:green;
@@ -453,6 +488,10 @@ button{
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 6px 10px 6px 20px;
+  }
+
+  #garden{
+    width: 20%;
   }
 
   /* details */

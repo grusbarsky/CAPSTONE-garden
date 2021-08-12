@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
- 
+{% if plant_results.data|length == 0 %}
+    <h3 class='sorry'>Sorry, no plants found</h3>
+  {% else %}
     <div class='plant-container'>
       {% for plant in plant_results.data %}
       <div class="plant-card">
@@ -11,5 +13,6 @@
       </div>
       {% endfor %}
     </div>
+{% endif %}
 
 {% endblock %}
