@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, flash, redirect, session, g, 
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 import requests
+import os
 
 from forms import SignupForm, LoginForm, EditUserForm, SearchPlantForm, AddGardenForm, AddPlantToGardenForm
 from models import db, bcrypt, connect_db, User, Garden, Plant, Garden_plant
@@ -12,7 +13,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///garden'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-app.config['SECRET_KEY'] = '12345'
+# use secret key in production or default to our dev one
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'shh')
 toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
