@@ -194,9 +194,6 @@ def user_profile(user_id):
     
     user = User.query.get_or_404(user_id)
     gardens = Garden.query.filter(Garden.user_id == user_id).all()
-    
-    print("\n\n\n gardens: " + str(gardens) + "\n\n\n")
-    print("\n\n\n user: " + str(user) + "\n\n\n")
 
     return render_template("/users/profile.html", user=user, gardens=gardens)
 
