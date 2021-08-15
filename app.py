@@ -8,11 +8,7 @@ from forms import SignupForm, LoginForm, EditUserForm, SearchPlantForm, AddGarde
 from models import db, bcrypt, connect_db, User, Garden, Plant, Garden_plant
 
 app = Flask(__name__)
-db_uri = os.environ.get(('DATABASE_URL')
-if db_uri:
-    print("\n\n\n\" + str(db_uri) + "\n\n\n\")
-    
-app.config['SQLALCHEMY_DATABASE_URI'] = db_uri.replace("://", "ql://", 1), 'postgresql:///garden')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(('DATABASE_URL').replace("://", "ql://", 1), 'postgresql:///garden')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
