@@ -5,31 +5,33 @@
   <div>
     <div>
       <h2>Edit Profile.</h2>
-      <form method="POST" id="user_form">
-        {{ form.hidden_tag() }}
-
-        {% for field in form if field.widget.input_type != 'hidden' and field.name != 'password' %}
-          {% for error in field.errors %}
-            <span class="text-danger">{{ error }}</span>
+      <div id='edit-container'>
+        <form method="POST" id="user_form">
+          {{ form.hidden_tag() }}
+  
+          {% for field in form if field.widget.input_type != 'hidden' and field.name != 'password' %}
+            {% for error in field.errors %}
+              <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {{ field(placeholder=field.label.text, class="form-control") }}
           {% endfor %}
-          {{ field(placeholder=field.label.text, class="form-control") }}
-        {% endfor %}
-
-        <p>To confirm changes, enter your password:</p>
-        {% if form.password.errors %}
-          {% for error in form.password.errors %}
-            <span class="text-danger">
-            {{ error }}
-          </span>
-          {% endfor %}
-        {% endif %}
-        {{ form.password(placeholder="Enter your password to confirm", class="form-control") }}
-
-        <div>
-          <button>Edit this user!</button>
-          <button href="/users/{{ user_id }}">Cancel</button>
-        </div>
-      </form>
+  
+          <p>To confirm changes, enter your password:</p>
+          {% if form.password.errors %}
+            {% for error in form.password.errors %}
+              <span class="text-danger">
+              {{ error }}
+            </span>
+            {% endfor %}
+          {% endif %}
+          {{ form.password(placeholder="Enter your password to confirm", class="form-control", id='edit-pass') }}
+  
+          <div>
+            <button>Edit this user!</button>
+            <button href="/users/{{ user_id }}">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 

@@ -8,7 +8,7 @@ from forms import SignupForm, LoginForm, EditUserForm, SearchPlantForm, AddGarde
 from models import db, bcrypt, connect_db, User, Garden, Plant, Garden_plant
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1) or 'postgres:///garden'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(('DATABASE_URL').replace("://", "ql://", 1), 'postgresql:///garden')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
@@ -48,7 +48,7 @@ def signup():
                 password=form.password.data,
                 email=form.email.data,
                 location=form.location.data,
-                image_url=form.image_url.data or User.image_url.default.arg,
+                image_url=form.image_url.data or '/static/7100-1_1.jpg',
             )
             db.session.commit()
 
@@ -192,9 +192,13 @@ def delete_user():
 def user_profile(user_id):
     """Redirect to any users profile"""
     
-    user = User.query.get_or_404(user_id)  
+    user = User.query.get_or_404(user_id)
+    gardens = Garden.query.filter(Garden.user_id == user_id).all()
+    
+    print("\n\n\n gardens: " + str(gardens) + "\n\n\n")
+    print("\n\n\n user: " + str(user) + "\n\n\n")
 
-    return render_template("/users/profile.html", user=user)
+    return render_template("/users/profile.html", user=user, gardens=gardens)
 
 @app.route('/users/search/<search>')
 def search_users(search):
