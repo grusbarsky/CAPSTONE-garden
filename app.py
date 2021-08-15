@@ -10,7 +10,6 @@ from models import db, bcrypt, connect_db, User, Garden, Plant, Garden_plant
 app = Flask(__name__)
 db_url= os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://") if db_url else 'postgresql:///garden'
-print("\n\n\n dburl: " + str(app.config['SQLALCHEMY_DATABASE_URI']) + "\n\n\n" )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
@@ -134,7 +133,7 @@ def homepage():
 def searchbar():
     """handle searchbar for users, plants"""
 
-    search = request.form.get('global-search')
+    search = request.form.get('global-search') or 'none'
  
     if request.form.get('options')== 'Users':
         return redirect (f'/users/search/{search}')
@@ -202,7 +201,7 @@ def user_profile(user_id):
 def search_users(search):
     """Lists users matching search or list all"""
 
-    if not search:
+    if search == 'none':
         users = User.query.all()
     else:
         users = User.query.filter(User.username.like(f"%{search}%")).all()
@@ -225,7 +224,13 @@ def search_plants(search):
     plant_results = requests.get(f'https://openfarm.cc/api/v1/crops/?filter=<{search}>').json()
 
         # if api_results is an empty list, it doesnt exist anywhere
-    if len(plant_results['data']) == False:
+    if search == 'none':
+
+        plant_results = Plant.query.all()
+
+        return render_template("plants/search-plants.html", plant_results=plant_results)
+
+    elif len(plant_results['data']) == False:
 
         plant_results = Plant.query.all()
 
