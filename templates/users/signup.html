@@ -9,6 +9,7 @@
 
       {% for field in form if field.widget.input_type != 'hidden' %}
       <br>
+      <br>
         {% for error in field.errors %}
           <span class="text-danger">{{ error }}</span>
         {% endfor %}
