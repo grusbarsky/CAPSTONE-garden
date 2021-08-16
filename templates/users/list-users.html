@@ -11,7 +11,7 @@
             <img src="{{user.image_url}}" onerror='this.src="/static/7100-1_1.jpg"' class="grid-element">
             {% if g.user %}
               {% if g.user.id == user.id %}
-
+                <button class='dlt-btn' style='visibility: hidden'></button>
               {% elif g.user.is_following(user) %}
                 <form method="POST" action="/follows/remove/{{ user.id }}">
                   <button class='dlt-btn'>Unfollow</button>

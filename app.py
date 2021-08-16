@@ -205,6 +205,8 @@ def search_users(search):
         users = User.query.all()
     else:
         users = User.query.filter(User.username.like(f"%{search}%")).all()
+        if users == []:
+           users = User.query.all() 
 
     return render_template('users/list-users.html', users=users)
 
