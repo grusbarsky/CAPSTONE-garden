@@ -254,26 +254,35 @@ def plant_details(plant_name):
         plant_result = requests.get(f'https://openfarm.cc/api/v1/crops/?filter=<{plant_name}>').json()
         error_image = "/assets/baren_field_square-4a827e5f09156962937eb100e4484f87e1e788f28a7c9daefe2a9297711a562a.jpg"
 
+        # loop through api results and find exact match
+        for result in plant_result['data']:
+            if result['attributes']['name'] == plant_name:
+                name = result['attributes']['name']
+                binomial_name = result['attributes']['binomial_name']
+                description = result['attributes']['description']
+                growing_method = result['attributes']['sowing_method']
 
-        name = plant_result['data'][0]['attributes']['name']
-        binomial_name = plant_result['data'][0]['attributes']['binomial_name']
-        description = plant_result['data'][0]['attributes']['description']
-        growing_method = plant_result['data'][0]['attributes']['sowing_method']
-
-        if plant_result['data'][0]['attributes']['main_image_path'] == error_image:
-            image = '/static/unknown-image.webp'
-        else:
-            image = plant_result['data'][0]['attributes']['main_image_path']
+                if result['attributes']['main_image_path'] == error_image:
+                    image = '/static/unknown-image.webp'
+                else:
+                    image = result['attributes']['main_image_path']
 
 
-        plant = Plant(name=name, 
+                plant = Plant(name=name, 
                     binomial_name=binomial_name, 
                     description=description, 
                     growing_method=growing_method,
                     image=image)
 
-        db.session.add(plant)
-        db.session.commit()
+                db.session.add(plant)
+                db.session.commit()
+
+                form = AddPlantToGardenForm()
+                form.garden.choices = [(g.id, g.name) for g in Garden.query.filter(Garden.user_id==g.user.id)]
+
+                user = User.query.get_or_404(g.user.id)
+
+                return render_template("plants/plant-details.html", plant=plant, user=user, form=form)
 
     form = AddPlantToGardenForm()
     form.garden.choices = [(g.id, g.name) for g in Garden.query.filter(Garden.user_id==g.user.id)]
