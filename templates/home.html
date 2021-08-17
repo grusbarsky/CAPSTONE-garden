@@ -12,7 +12,7 @@
     <div class='plant-container'>
         {% for plant in plants %}
         <div class="plant-card">
-            <a href='/plants/{{plant.id}}'>
+            <a href='/plants/{{plant.name}}'>
                 <img src="{{ plant.image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
                 <div class="plant-name">{{plant.name}}</div>
             </a>

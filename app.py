@@ -242,14 +242,12 @@ def search_plants(search):
         return render_template("plants/search-plants.html", plant_results=plant_results)
 
 
-
 @app.route('/plants/<plant_name>')
 def plant_details(plant_name):
     """show a single plants details"""
 
     # check if name in local db
     plant = Plant.query.filter(Plant.name == plant_name).first()
-
 
     # If it's not, add to local db
     if plant == None:
@@ -275,16 +273,10 @@ def plant_details(plant_name):
                     description=description, 
                     growing_method=growing_method,
                     image=image)
+                
 
                 db.session.add(plant)
                 db.session.commit()
-
-                form = AddPlantToGardenForm()
-                form.garden.choices = [(g.id, g.name) for g in Garden.query.filter(Garden.user_id==g.user.id)]
-
-                user = User.query.get_or_404(g.user.id)
-
-                return render_template("plants/plant-details.html", plant=plant, user=user, form=form)
 
     form = AddPlantToGardenForm()
     form.garden.choices = [(g.id, g.name) for g in Garden.query.filter(Garden.user_id==g.user.id)]
