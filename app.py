@@ -500,8 +500,9 @@ def weather_page():
 
     api_results = requests.get(f'http://api.weatherapi.com/v1/forecast.json?key=1db06177940b420fa9c140429212707&q={zipcode}&days=5&aqi=no&alerts=no').json()
 
-    # if api_results['error'] == True:
-    #     return('Invalid zipcode. Please change zipcode in Edit User')
+    if 'error' in api_results:
+        err = 'Invalid location. Please go to user profile and edit location.'
+        return render_template("weather-err.html", err=err)
 
     return render_template("weather.html", api_results=api_results)
 
