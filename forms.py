@@ -24,7 +24,7 @@ class EditUserForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=6, max=20)])
     email = StringField('Email', validators=[InputRequired(), Email()])
     image_url = StringField('Image URL')
-    location = StringField('Location')
+    location = TextField('Location')
     password = PasswordField('Password', validators=[Length(min=6, max=20)])
 
 class SearchPlantForm(FlaskForm):

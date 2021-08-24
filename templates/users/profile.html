@@ -2,12 +2,13 @@
 {% block content %}
 
 <div class='user-details'>
-    <div class='details'>
+    <div class='ps-details'>
         <h1>{{user.username}}</h1>
         <img src="{{ user.image_url }}" onerror='this.src="/static/7100-1_1.jpg"' width="30" height="30">
         <form action="/follows/{{user.id}}">
             <button>Follows</button>
         </form>
+        <br>
         {% if user.id == g.user.id %}
             <form action="/users/profile/edit">
                 <button>Edit Profile</button>
@@ -28,7 +29,6 @@
                         <img src="/static/unknown-image.webp" class="grid-element">
                     {% endif %}
                     <div class="garden-name">{{garden.name}}</div>
-                    <div>{{garden.description}}</div>
                     {% if user.id == g.user.id %}
                         <form method="POST" action="/gardens/{{ garden.id }}/delete">
                             <button class='dlt-btn'>X</button>
@@ -50,7 +50,7 @@
     {% else %}
         {% for plant in user.plants %}
             <div class='plant-card'>
-                <a href='/plants/{{plant.id}}'>
+                <a href='/plants/{{plant.name}}'>
                     <div class="image-wrapper">
                         <img src="{{ plant.image }}" alt="">
                         <div class="garden-name">{{plant.name}}</div>
@@ -81,7 +81,6 @@
                         <img src="/static/unknown-image.webp" class="grid-element">
                         {% endif %}
                         <div class="garden-name">{{garden.name}}</div>
-                        <div class="garden-description">{{garden.description}}</div>
                         {% if user.id == g.user.id %}
                         <form action='/gardens/{{garden.id}}/delete-save'> 
                         <button class='dlt-btn'>X</button>

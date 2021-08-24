@@ -22,7 +22,7 @@ class User(db.Model):
     username = db.Column(db.Text, nullable=False, unique=True)
     email = db.Column(db.Text, nullable=False, unique=True)
     password = db.Column(db.Text, nullable=False)
-    location = db.Column(db.Text, nullable=False)
+    location = db.Column(db.String, nullable=False)
     image_url = db.Column(db.Text, default="/static/7100-1_1.jpg")
 
     gardens = db.relationship('Garden', secondary='saved_gardens', backref='users')

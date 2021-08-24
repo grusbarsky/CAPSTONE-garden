@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-  <br>
   <div>
     <h2>My Inspirations</h2>
     <br>
-    <div class=garden-container>
+    <div class=plant-container>
       {% for garden in g.user.gardens %}
-      <div class="garden-card">
+      <div class="plant-card">
           <a href='/gardens/{{garden.id}}'>
             {% if garden.plants[0] %}
               <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
@@ -14,7 +13,13 @@
               <img src="/static/unknown-image.webp" class="grid-element">
             {% endif %}
               <div class="garden-name">{{garden.name}}</div>
-              <div class="garden-description">{{garden.description}}</div>
+              {% if g.user %}
+                {% if garden in g.user.gardens %}
+                  <form method="POST" action='/gardens/{{garden.id}}/delete-save'>
+                    <button class='dlt-btn'>X</button>
+                  </form>
+                {% endif %}
+              {% endif %}
           </a>
       </div>
       {% endfor %}

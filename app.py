@@ -19,6 +19,7 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
+
 # global user variable
 current_user = "current_user"
 

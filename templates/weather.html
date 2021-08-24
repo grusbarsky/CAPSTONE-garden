@@ -3,64 +3,80 @@
 
 <br>
 <br>
-<h1 id='weather-header'>Your Weather Prediction for {{api_results.location.name}}, {{api_results.location.region}}</h1>
+<div class='weather-container'>
+    <h1 id='weather-header'>Weather for {{api_results.location.name}}, {{api_results.location.region}}</h1>
 <br>
 <br>
-<h2 class=weather-subheader>Current Weather</h2>
-<br>
-    <div id='current-weather-container'>
-        <div>Temperature: {{api_results.current.temp_f}} F</div>
-        <div>Humidity: {{api_results.current.humidity}}%</div>
-        <div>Wind: {{api_results.current.wind_mph}} MPH</div>
-        <div>Current Conditions: {{api_results.current.condition.text}}</div>
-        <img src={{api_results.current.condition.icon}}>
+<div class="curr-container">
+    <div class="curr-widget">
+      <div class="details">
+        <div class='date'>Current Weather</div>
+        <div>
+            <div class="temperature">{{api_results.current.temp_f}}° F</div>
+            <img class='weather-img' src={{api_results.current.condition.icon}}>
+        </div>
+        <div class="summary">
+          <p class="summaryText">{{api_results.current.condition.text}}</p>
+        </div>
+        <div class="precipitation weather-details">Humidity: {{api_results.current.humidity}}%</div>
+        <div class="wind weather-details">Wind: {{api_results.current.wind_mph}} MPH</div>
+      </div>
     </div>
+  </div>
 
-<h2 class=weather-subheader>3 Day Weather Forecast</h2>
-    <div id='forecast-container'>
-        <div class='forecast 1'>
-            <h3>{{api_results.forecast.forecastday[1].date}}</h3>
-            <div>Conditions: {{api_results.forecast.forecastday[1].day.condition.text}}</div>
-            <div>Max Temp: {{api_results.forecast.forecastday[1].day.maxtemp_f}} F</div>
-            <div>Min Temp: {{api_results.forecast.forecastday[1].day.mintemp_f}} F</div>
-            <div>Avg Temp: {{api_results.forecast.forecastday[1].day.avgtemp_f}} F</div>
-            <div>Avg Humidity: {{api_results.forecast.forecastday[1].day.avghumidity}}%</div>
-            <div>Chance of Rain: {{api_results.forecast.forecastday[1].day.daily_chance_of_rain}}%</div>
-            <div>Total Precipitation: {{api_results.forecast.forecastday[1].day.totalprecip_in}} inches</div>
-            <div>Chance of Snow: {{api_results.forecast.forecastday[1].day.daily_chance_of_snow}}%</div>
-            <div>Sunrise: {{api_results.forecast.forecastday[1].astro.sunrise}}</div>
-            <div>Sunset: {{api_results.forecast.forecastday[1].astro.sunset}}</div>
-            <img class='weather-icon' src={{api_results.forecast.forecastday[1].day.condition.icon}}>
+<h2 class=weather-subheader>Weather Forecast</h2>
+    <div class=forecast-container>
+      <div class="container">
+        <div class="widget">
+          <div class="details">
+            <div class='date'>{{api_results.forecast.forecastday[1].date}}</div>
+            <div>
+                <div class="temperature">{{api_results.forecast.forecastday[1].day.avgtemp_f}}° F</div>
+                <img class='weather-img' src={{api_results.forecast.forecastday[1].day.condition.icon}}>
+                <br>
+                <br>
+            </div>
+            <div class="summary">
+              <p class="summaryText">{{api_results.forecast.forecastday[1].day.condition.text}}</p>
+            </div>
+            <div class='temp weather-details'>Max: {{api_results.forecast.forecastday[1].day.maxtemp_f}}° F</div>
+            <div class='temp weather-details'>Min: {{api_results.forecast.forecastday[1].day.mintemp_f}}° F</div>
+            <div class="humidity weather-details">Humidity: {{api_results.forecast.forecastday[2].day.avghumidity}}%</div>
+            <div class='weather-details'>Chance of Rain: {{api_results.forecast.forecastday[1].day.daily_chance_of_rain}}%</div>
+            <div class='weather-details'>Total Precipitation: {{api_results.forecast.forecastday[1].day.totalprecip_in}} inches</div>
+            <div class='weather-details'>Chance of Snow: {{api_results.forecast.forecastday[1].day.daily_chance_of_snow}}%</div>
+            <div class='weather-details'>Sunrise: {{api_results.forecast.forecastday[1].astro.sunrise}}</div>
+            <div class='weather-details'>Sunset: {{api_results.forecast.forecastday[1].astro.sunset}}</div>
+          </div>
         </div>
-        <div class='forecast 2'>
-            <h3>{{api_results.forecast.forecastday[2].date}}</h3>
-            <div>Conditions: {{api_results.forecast.forecastday[2].day.condition.text}}</div>
-            <div>Max Temp: {{api_results.forecast.forecastday[2].day.maxtemp_f}} F</div>
-            <div>Min Temp: {{api_results.forecast.forecastday[2].day.mintemp_f}} F</div>
-            <div>Avg Temp: {{api_results.forecast.forecastday[2].day.avgtemp_f}} F</div>
-            <div>Avg Humidity: {{api_results.forecast.forecastday[2].day.avghumidity}}%</div>
-            <div>Chance of Rain: {{api_results.forecast.forecastday[2].day.daily_chance_of_rain}}%</div>
-            <div>Total Precipitation: {{api_results.forecast.forecastday[2].day.totalprecip_in}} inches</div>
-            <div>Chance of Snow: {{api_results.forecast.forecastday[2].day.daily_chance_of_snow}}%</div>
-            <div>Sunrise: {{api_results.forecast.forecastday[2].astro.sunrise}}</div>
-            <div>Sunset: {{api_results.forecast.forecastday[2].astro.sunset}}</div>
-            <img class='weather-icon' src={{api_results.forecast.forecastday[2].day.condition.icon}}>
+      </div>
+
+      <div class="container">
+        <div class="widget">
+          <div class="details">
+            <div class='date'>{{api_results.forecast.forecastday[2].date}}</div>
+            <div>
+                <div class="temperature">{{api_results.forecast.forecastday[2].day.avgtemp_f}}° F</div>
+                <img class='weather-img' src={{api_results.forecast.forecastday[2].day.condition.icon}}>
+                <br>
+                <br>
+            </div>
+            <div class="summary">
+              <p class="summaryText">{{api_results.forecast.forecastday[2].day.condition.text}}</p>
+            </div>
+            <div class='temp weather-details'>Max: {{api_results.forecast.forecastday[2].day.maxtemp_f}}° F</div>
+            <div class='temp weather-details'>Min: {{api_results.forecast.forecastday[2].day.mintemp_f}}° F</div>
+            <div class="humidity weather-details">Humidity: {{api_results.forecast.forecastday[2].day.avghumidity}}%</div>
+            <div class='weather-details'>Chance of Rain: {{api_results.forecast.forecastday[2].day.daily_chance_of_rain}}%</div>
+            <div class='weather-details'>Total Precipitation: {{api_results.forecast.forecastday[2].day.totalprecip_in}} inches</div>
+            <div class='weather-details'>Chance of Snow: {{api_results.forecast.forecastday[2].day.daily_chance_of_snow}}%</div>
+            <div class='weather-details'>Sunrise: {{api_results.forecast.forecastday[2].astro.sunrise}}</div>
+            <div class='weather-details'>Sunset: {{api_results.forecast.forecastday[2].astro.sunset}}</div>
+          </div>
         </div>
-        <div class='forecast 3'>
-            <h3>{{api_results.forecast.forecastday[2].date}}</h3>
-            <div>Conditions: {{api_results.forecast.forecastday[2].day.condition.text}}</div>
-            <div>Max Temp: {{api_results.forecast.forecastday[2].day.maxtemp_f}} F</div>
-            <div>Min Temp: {{api_results.forecast.forecastday[2].day.mintemp_f}} F</div>
-            <div>Avg Temp: {{api_results.forecast.forecastday[2].day.avgtemp_f}} F</div>
-            <div>Avg Humidity: {{api_results.forecast.forecastday[2].day.avghumidity}}%</div>
-            <div>Chance of Rain: {{api_results.forecast.forecastday[2].day.daily_chance_of_rain}}%</div>
-            <div>Total Precipitation: {{api_results.forecast.forecastday[2].day.totalprecip_in}} inches</div>
-            <div>Chance of Snow: {{api_results.forecast.forecastday[2].day.daily_chance_of_snow}}%</div>
-            <div>Sunrise: {{api_results.forecast.forecastday[2].astro.sunrise}}</div>
-            <div>Sunset: {{api_results.forecast.forecastday[2].astro.sunset}}</div>
-            <img class='weather-icon' src={{api_results.forecast.forecastday[2].day.condition.icon}}>
-        </div>
+      </div>
     </div>
+</div>
 
 
 {% endblock %}

@@ -9,6 +9,13 @@
               <a href='/plants/{{plant.name}}'>
                   <img src="{{ plant.image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
                   <div class="plant-name">{{plant.name}}</div>
+                  {% if g.user %}
+                      {% if plant in g.user.plants %}
+                        <form method="POST" action="/plants/{{ plant.id }}/delete">
+                            <button class='dlt-btn'>X</button>
+                        </form>
+                      {% endif %}
+                  {% endif %}
               </a>
           </div>
           {% endfor %}

@@ -1,6 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&family=Roboto:wght@300&display=swap');
-
 html{
   background-image: url("../../static/back.jpg");
   background-repeat: no-repeat;
@@ -22,8 +20,8 @@ body{
   border-style: solid;
   background: white;
   position: fixed;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 900;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
 }
 
 .body-contents{
@@ -55,6 +53,7 @@ h2{
 h3{
   margin-left: 2%;
   font-size: 150%;
+  width: 100%;
 }
 
 /* New Account */
@@ -118,10 +117,7 @@ h3{
 }
 
 /* weather */
-#current-weather-container{
-  margin: auto;
-  text-align: center;
-}
+
 
 .weather-subheader{
   margin: auto;
@@ -133,15 +129,106 @@ h3{
   text-align: center;
 }
 
-#forecast-container{
-  overflow: hidden;
-  margin: auto;
+.forecast-container{
   display: flex;
-  align-items: center;
-  align-content: center;
   justify-content: space-evenly;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.date{
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 375px;
+  margin: 20px 10px 30px 20px;
   flex-wrap: wrap;
-  text-align: center;
+}
+
+.widget {
+  background: linear-gradient(to bottom right, #3cc0fe 20%, rgba(#0066ff, 0.6));
+  background-color: lightskyblue;
+  width: 275px;
+  height: 375px;
+  border-radius: 6px;
+  box-shadow: 0px 15px 20px -5px #27a5fd;
+  position: relative;
+  overflow: hidden;
+}
+
+.curr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 225px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+}
+
+.curr-widget {
+  background: linear-gradient(to bottom right, #3cc0fe 20%, rgba(#0066ff, 0.6));
+  background-color: lightskyblue;
+  width: 400px;
+  height: 250px;
+  border-radius: 6px;
+  box-shadow: 0px 15px 20px -5px #27a5fd;
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-img{
+  display: inline-block;
+  vertical-align:top;
+}
+
+.details{
+  font-family: Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.temperature {
+  color: white;
+  font-weight: 300;
+  font-size: 50px;
+  display: inline-block;
+  vertical-align:top;
+  margin: 10px;
+}
+.summary {
+  color: #d2e9fa;
+  font-size: 1em;
+  font-weight: 600;
+  width: 130px;
+  margin-top: -8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #9cd0ff;
+  margin-left: 4px;
+}
+.summaryText {
+  margin: 0;
+  margin-left: 28px;
+}
+.weather-details {
+  color: #d2e9fa;
+  font-size: .9em;
+  font-weight: 600;
+  margin-left: 30px;
+}
+.precipitation {
+  margin-top: 8px;
+}
+.wind {
+  margin-top: 2px;
 }
 
 /* plant-details */
@@ -156,7 +243,12 @@ h3{
   border-radius: 2px;
 }
 
-/* search bar */
+.plant-name-details{
+  font-weight: bold;
+  font-size: 40px;
+}
+
+/* search bar and garden choices */
 select {
   width: 10%;
   padding: 3px 3px;
@@ -211,6 +303,21 @@ select {
   overflow: hidden;
   height: 250px;
   width: 200px;
+  position: relative;
+}
+
+.dlt-btn {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(270%, -50%);
+  background: none;
+  color:white;
+  font-size: 15px;
+  padding: 5px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 900;
 }
 
 .plant-card a img{
@@ -299,8 +406,8 @@ nav ul li {
     position: relative;
     text-decoration: none;
     text-align: center;
-    font-weight: 900;
-    font-family: "Montserrat";
+    font-weight: 400;
+    font-family: sans-serif;
 }
 
 nav li a {
@@ -398,7 +505,7 @@ nav ul{
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: white;
   text-shadow: 4px 4px green, 8px 8px lightskyblue;
-  font-family: sans-serif;
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 #user-image{
@@ -442,60 +549,49 @@ select{
 }
 
 button{
-  display: inline-block;
-  width: 130px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: bold;
-  font-family: "Montserrat";
-  color: white;
+  color: #fff !important;
+	text-decoration: none;
+	background: green;
+	padding: 8px;
+	border-radius: 5px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+}
+
+button:hover {
+  background: darkgreen;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+}
+
+
+input[type=submit]{
+  color: #fff !important;
+	text-decoration: none;
+	background: green;
+	padding: 8px;
+	border-radius: 5px;
+	display: inline-block;
+	border: none;
+  transition: all 0.4s ease 0s;
+}
+
+input[type=submit]:hover {
+  background: darkgreen;
   letter-spacing: 1px;
-  padding: 5px 25px 5px;
-  margin: 5px;
-  outline: 0;
-  border: 1px solid black;
-  cursor: pointer;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
 }
 
-button::after {
-  content: "";
-  background-color: green;
-  width: 100%;
-  z-index: -1;
-  position: absolute;
-  height: 100%;
-  top: 3px;
-  left: 3px;
-  transition: 0.2s;
+#home-buttons{
+  text-align: center;
 }
-
-button:hover::after {
-  top: 0px;
-  left: 0px;
-}
-
-
-  input[type=submit]{
-    display: inline-block;
-    padding:5px 5px;
-    margin:2px 5px 5px 2px;
-    border-radius: 3px;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family: "Montserrat";
-    font-weight:400;
-    color:#FFFFFF;
-    background-color:green;
-    box-shadow:1px 1px 1px black;
-    text-align:center;
-    position:relative;
-  }
-
-  #home-buttons{
-    text-align: center;
-  }
 
   /* edit profile page */
 
@@ -546,7 +642,7 @@ button:hover::after {
 
   /* details */
 
-  .details img{
+  .ps-details img{
     height: 100px;
     width: 100px;
     border-radius: 5%;
@@ -564,7 +660,7 @@ button:hover::after {
     text-align: center;
   }
 
-  .details{
+  .ps-details{
     margin-bottom: 5%;
   }
 
@@ -573,3 +669,8 @@ button:hover::after {
     align-content: left;
     justify-content: left;
   }
+
+/* dropdown menus */
+
+
+
