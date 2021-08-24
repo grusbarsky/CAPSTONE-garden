@@ -35,6 +35,13 @@ body{
   transform: translatex(-50%);
 }
 
+/* messages */
+
+.alert{
+  position:absolute;
+  top: 0px;
+}
+
 a{
   color: black;
 }
@@ -669,8 +676,6 @@ input[type=submit]:hover {
     align-content: left;
     justify-content: left;
   }
-
-/* dropdown menus */
 
 
 
