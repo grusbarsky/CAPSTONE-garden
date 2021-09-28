@@ -3,9 +3,12 @@
   <div>
     <h2>My Inspirations</h2>
     <br>
-    <div class=plant-container>
+    {% if g.user.gardens|length == 0 %}
+      <h3 class='sorry'>Sorry, no inspirations to show</h3>
+    {% else %}
+      <div class=plant-container>
       {% for garden in g.user.gardens %}
-      <div class="plant-card">
+        <div class="plant-card">
           <a href='/gardens/{{garden.id}}'>
             {% if garden.plants[0] %}
               <img src="{{ garden.plants[0].image }}" onerror='this.src="/static/unknown-image.webp"' class="grid-element">
@@ -23,6 +26,7 @@
           </a>
       </div>
       {% endfor %}
+    {% endif %}
     </div>
   </div>
 {% endblock %}

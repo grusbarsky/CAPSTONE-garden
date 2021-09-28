@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class='user-details'>
+<div id='details'>
     <div class='ps-details'>
-        <h1>{{user.username}}</h1>
-        <img src="{{ user.image_url }}" onerror='this.src="/static/7100-1_1.jpg"' width="30" height="30">
-        <form action="/follows/{{user.id}}">
-            <button>Follows</button>
-        </form>
-        <br>
-        {% if user.id == g.user.id %}
-            <form action="/users/profile/edit">
-                <button>Edit Profile</button>
-            </form>
-        {% endif %}
-    </div>
-</div>
-
-<h3>Gardens</h3>
+        <div class='header'>
+            <img class='detail-img' src="{{ user.image_url }}" onerror='this.src="/static/7100-1_1.jpg"'>
+            <div class='names'>
+                <div class='name'>{{user.username}}</div>
+                <div class='detail-buttons'>
+                    <form action="/follows/{{user.id}}">
+                        <button>Follows</button>
+                    </form>
+                    <br>
+                    {% if user.id == g.user.id %}
+                        <form action="/users/profile/edit">
+                            <button>Edit Profile</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <h3>Gardens</h3>
 <div class='plant-container'>
     {% if gardens|length != 0 %}
         {% for garden in gardens %}
@@ -39,14 +42,14 @@
         {% endfor %}
         
     {% else %}
-        <h3 class='sorry'>Sorry, no gardens to show</h3> 
+        <h3 class='profsorry'>Sorry, no gardens to show</h3> 
     {% endif %}
 </div>
 
 <h3>Plants</h3>
 <div class='plant-container'>
     {% if user.plants|length == 0 %}
-        <h3 class='sorry'>Sorry, no plants to show</h3>
+        <h3 class='profsorry'>Sorry, no plants to show</h3>
     {% else %}
         {% for plant in user.plants %}
             <div class='plant-card'>
@@ -56,7 +59,7 @@
                         <div class="garden-name">{{plant.name}}</div>
                     </div>
                     {% if user.id == g.user.id %}
-                    <form name='remove-save' href='/plants/{{plant.id}}/save'>
+                    <form action="/plants/{{ plant.id }}/delete">
                         <button class='dlt-btn'>X</button>
                     </form>
                     {% endif %}
@@ -69,7 +72,7 @@
 <h3>Inspirations</h3>
 <div class='plant-container'>
     {% if user.gardens|length == 0 %}
-        <h3 class='sorry'>Sorry, no inspirations to show</h3>
+        <h3 class='profsorry'>Sorry, no inspirations to show</h3>
     {% else %}
         {% for garden in g.user.gardens %}
             <div class='plant-card'>
@@ -92,5 +95,9 @@
         {% endfor %}
     {% endif %}
 </div>
+
+    </div>
+</div>
+
 
 {% endblock %}

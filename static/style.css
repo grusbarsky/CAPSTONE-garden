@@ -1,4 +1,5 @@
 
+  
 html{
   background-image: url("../../static/back.jpg");
   background-repeat: no-repeat;
@@ -20,7 +21,7 @@ body{
   border-style: solid;
   background: white;
   position: fixed;
-  font-family: Roboto, sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
 }
 
@@ -32,6 +33,7 @@ body{
   overflow-y:scroll;
   overflow-x:hidden;
   left: 50%;
+  height: 65%;
   transform: translatex(-50%);
 }
 
@@ -46,15 +48,24 @@ a{
   color: black;
 }
 
-.sorry{
-  text-align: center;
+.profsorry{
+  text-align: left;
+  margin-left: 30px;
   font-size: 20px;
   width: 300px;
+}
+
+.sorry{
+  text-align: center;
+  margin-left: auto;
+  font-size: 20px;
+  width: 500px;
 }
 
 h2{
   text-align: center;
   margin-bottom: 2%;
+  width: 100%;
 }
 
 h3{
@@ -84,7 +95,7 @@ h3{
 }
 
 .form-control{
-  margin: 0px 50px 10px 50px;
+  margin: 0px 25px 10px 25px;
 }
 
 /* Follows */
@@ -152,9 +163,9 @@ h3{
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   height: 375px;
-  margin: 20px 10px 30px 20px;
+  margin: 0px 10px 30px 20px;
   flex-wrap: wrap;
 }
 
@@ -240,28 +251,66 @@ h3{
 
 /* plant-details */
 
+.detail-info{
+  overflow-wrap: break-word;
+  width: 75%;
+}
+
 .plant-detail-container{
   position: absolute;
 }
-.plant-detail-img{
+.detail-img{
   position: relative;
+  display: inline-block;
+  vertical-align:top;
   width: 25px;
   height: 25%;
   border-radius: 2px;
 }
 
-.plant-name-details{
-  font-weight: bold;
-  font-size: 40px;
+.names{
+  display: inline-block;
 }
 
-/* search bar and garden choices */
-select {
-  width: 10%;
-  padding: 3px 3px;
-  border: none;
-  border-radius: 4px;
-  background-color: #f1f1f1;
+#details{
+  align-items: left;
+  text-align: left;
+}
+
+.plant-details-btn{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.detail-buttons{
+  margin-top: 20px;
+}
+
+.ps-details{
+  background: linear-gradient(to bottom right, #F2F5F3 20%, rgba(#C6CCC8, 0.6));
+  background-color:#F2F5F3;
+  border-radius: 6px;
+  box-shadow: 0px 15px 20px -5px #C6CFC9;
+  padding: 30px;
+  margin-bottom: 5%;
+}
+
+.ps-details img{
+  height: 200px;
+  width: 200px;
+  border-radius: 6px;
+  margin-right: 30px;
+}
+
+.name{
+  font-size: 40px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#garden{
+  width: 50%;
 }
 
 /* garden-cards */
@@ -308,18 +357,18 @@ select {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 250px;
+  height: 225px;
   width: 200px;
   position: relative;
 }
 
 .dlt-btn {
   position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(270%, -50%);
+  top: 12%;
+  left: 75%;
   background: none;
-  color:white;
+  color:white !important;
+  border: none !important;
   font-size: 15px;
   padding: 5px 5px;
   cursor: pointer;
@@ -333,6 +382,7 @@ select {
   border-radius: 5px;
   position: relative;
   display: inline-block;
+  margin: 0px;
 }
 
 
@@ -348,9 +398,10 @@ select {
 
 .plant-container{
   margin-left: auto;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 25px;
+  grid-gap: 10px;
   text-align: center;
 }
 
@@ -541,10 +592,6 @@ nav{
   text-align: center;
 }
 
-select{
-  width: 5%;
-}
-
 /* buttons */
 
 #remove-save{
@@ -556,54 +603,75 @@ select{
 }
 
 button{
-  color: #fff !important;
-	text-decoration: none;
-	background: green;
-	padding: 8px;
+  color: black !important;
+	border: 2px solid black !important;
+  background: white;
+	padding: 7px;
 	border-radius: 5px;
 	display: inline-block;
 	border: none;
-	transition: all 0.4s ease 0s;
+	transition: all 0.6s ease 0.2s;
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 }
 
 button:hover {
-  background: darkgreen;
-	letter-spacing: 1px;
+  background: rgb(0, 126, 0);
+  color: white !important;
 	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-	transition: all 0.4s ease 0s;
+	transition: all 0.6s ease 0.2s;
 }
 
 
 input[type=submit]{
-  color: #fff !important;
-	text-decoration: none;
-	background: green;
-	padding: 8px;
+  color: black !important;
+	border: 2px solid black !important;
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	background: white;
+	padding: 7px;
 	border-radius: 5px;
 	display: inline-block;
 	border: none;
-  transition: all 0.4s ease 0s;
+  transition: all 0.6s ease 0.2s;
 }
 
 input[type=submit]:hover {
-  background: darkgreen;
-  letter-spacing: 1px;
+  background: rgb(0, 126, 0);
+  color: white !important;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-  transition: all 0.4s ease 0s;
+  transition: all 0.6s ease 0.2s;
+}
+
+#home-buttons-container{
+  position: absolute; 
+  height: 75vmax;
 }
 
 #home-buttons{
   text-align: center;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  background-color: white;
+  width: 100vmax;
+  padding-bottom: 10px;
+  z-index: 1000;
+}
+
+.details-buttons{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
   /* edit profile page */
 
   #edit-container{
     text-align: center;
+    width: 300px;
   }
 
 
@@ -623,19 +691,11 @@ input[type=submit]:hover {
     border-bottom: 2px solid black;
   }
 
-  select {
-    width: 6%;
-    padding: 5px 5px;
-    border: none;
-    border-radius: 4px;
-    background-color: white;
-  }
-
   #global-search{
     width: 20%;
     box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
+    border: 0;
+    border-bottom: 2px solid black;
     font-size: 12px;
     background-color: white;
     background-position: 10px 10px; 
@@ -643,17 +703,7 @@ input[type=submit]:hover {
     padding: 6px 10px 6px 20px;
   }
 
-  #garden{
-    width: 20%;
-  }
-
   /* details */
-
-  .ps-details img{
-    height: 100px;
-    width: 100px;
-    border-radius: 5%;
-  }
 
   .garden-details div{
     text-align: center;
@@ -667,15 +717,98 @@ input[type=submit]:hover {
     text-align: center;
   }
 
-  .ps-details{
-    margin-bottom: 5%;
-  }
-
   .plant-search-form{
-    text-align: left;
-    align-content: left;
-    justify-content: left;
+    position: relative;
   }
 
+  #plant_search_form{
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* select */
+
+  #home-dropdown{
+    display: inline-block;
+    height: 75px;
+  }
+
+  .dropdown{
+    display: inline-block;
+    height: 100%;
+  }
+  .custom-select {
+    position: relative;
+  }
+  
+  /*hide original SELECT element: */
+  .custom-select select {
+    display: none;
+  }
+  
+  /* Style the arrow inside the select element: */
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: black transparent transparent transparent;
+  }
+
+  .select-selected:hover{
+    background: rgb(0, 126, 0);
+    color: white !important;
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.6s ease 0.2s;
+  }
+  
+  /* Point the arrow upwards when the select box is open (active): */
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent black transparent;
+    top: 7px;
+  }
+  
+  /* style the items (options), including the selected item: */
+  .select-items div,.select-selected {
+    color: black !important;
+	  border: 2px solid black !important;
+    font-size: 14px;
+    background: white;
+	  border-radius: 5px;
+	  transition: all 0.6s ease 0.2s;
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    padding: 6px 6px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+
+  .select-items div:hover,.select-selected:hover{
+    color: white !important;
+  }
+  
+  /* Style items (options): */
+  .select-items {
+    position: absolute;
+    background: rgb(0, 126, 0);
+    color: white !important;
+    transition: all 0.6s ease 0.2s;
+    border-radius: 6px;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  
+  /* Hide the items when the select box is closed: */
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 
 

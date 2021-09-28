@@ -1,55 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class='plant-details'>
+<div id='details'>
     <div class='ps-details'>
-        <div class='plant-name-details'>{{plant.name}}</div>
-        <br>
-        <br>
-        <img class='plant-detail-img' src={{ plant.image }}>
-        <br>
-        <br>
-        <div><b>Name:</b> {{plant.name}}</div>
-        <br>
-        <div><b>Binomial name: </b> {{plant.binomial_name}}</div>
+        <div class='header'>
+            <img class='detail-img' src={{ plant.image }}>
+            <div class='names'>
+                <div class='name'>{{plant.name}}</div>
+                <div class='detail-info'><b>Binomial name: </b> {{plant.binomial_name}}</div>
+                <div class='detail-buttons'>
+                    {% if g.user %}
+                    {% if g.user.is_saved(plant.id) %}
+                        <form method="POST" name='remove-save' class='plant-details-btn' action='/plants/{{plant.id}}/delete'>
+                            <button>Remove from My Plants</button>
+                        </form>
+                    <!-- if g.user has plant saved: unsave button, add to garden dropdown -->
+                    {% else %}
+                        <form method="POST" name='save' class='plant-details-btn' action='/plants/{{plant.id}}/save'>
+                            <button>Save To My plants</button>
+                        </form>
+                    {% endif %}
+                    <br>
+                    <!-- Do not show if no gardens exist, instead show create Garden button -->
+                    {% if form.garden.choices|length != 0 %}
+                        <form method='POST' class='plant-details-btn' action='/plants/{{plant.id}}/add-plant'>
+                            <button>Add To Garden</button>
+                            <div class='dropdown'>
+                                <div class='custom-select' style="width:120px;">
+                                    {{form.hidden_tag()}}
+                                    {% for field in form if field.widget.input_type != 'hidden' %}
+                                        {{field.label}}
+                                        {{field}}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    {% else %}
+                        <div style="font-size: smaller;">Please Create Garden To Add</div>
+                        <br>
+                        <form class='plant-details-btn' action='/gardens'>
+                            <button>Create Garden</button>
+                        </form>
+                    {% endif %}
+                    <!-- elif save button and add garden to dropdown -->
+                {% endif %}
+        
+                </div>
+            </div>
+        </div>
         <br>
         <div><b>Description: </b> {{plant.description}}</div>
         <br>
         <div><b>Sun Requirements: </b> {{plant.sun_requirements}}</div>
         <br>
         <div><b>Growing Method: </b> {{plant.growing_method}}</div>
-        <br>
-        {% if g.user %}
-        {% if g.user.is_saved(plant.id) %}
-            <form method="POST" name='remove-save' action='/plants/{{plant.id}}/delete'>
-                <button>Remove from Saved</button>
-            </form>
-        <!-- if g.user has plant saved: unsave button, add to garden dropdown -->
-        {% else %}
-            <form method="POST" name='save' action='/plants/{{plant.id}}/save'>
-                <button>Save</button>
-            </form>
-        {% endif %}
-        <br>
-        <!-- Do not show if no gardens exist, instead show create Garden button -->
-        {% if form.garden.choices|length != 0 %}
-            <form method='POST' action='/plants/{{plant.id}}/add-plant'>
-                {{form.hidden_tag()}}
-                {% for field in form if field.widget.input_type != 'hidden' %}
-                    {{field.label}}
-                    {{field}}
-                {% endfor %}
-                <button>Add To Garden</button>
-            </form>
-        {% else %}
-            <div style="font-size: smaller;">Please Create Garden To Add</div>
-            <br>
-            <form action='/gardens'>
-                <button>Create Garden</button>
-            </form>
-        {% endif %}
-        <!-- elif save button and add garden to dropdown -->
-    {% endif %}
     </div>
 
 </div>

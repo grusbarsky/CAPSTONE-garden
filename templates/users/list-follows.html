@@ -1,26 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>{{user.username}}'s Follows</h2>
-<div  class='user-container'>
-    {% for follow in follows %}
-    <div class="user-card">
-        <a href='/users/{{follow.id}}'>
-            <div class="user-name">{{follow.username}}</div>
+<div>
+  <h2>{{user.username}}'s Follows</h2>
+  <br>
+  {% if follows|length == 0 %}
+    <h3 class='sorry'>Sorry, no follows to show</h3>
+  {% else %}
+    <div  class='user-container'>
+      {% for follow in follows %}
+        <div class="user-card">
+          <a href='/users/{{follow.id}}'>
             <img src="{{follow.image_url}}" onerror='this.src="/static/7100-1_1.jpg"' class="grid-element">
+            <div class="user-name">{{follow.username}}</div>
             {% if g.user %}
-              {% if g.user.id == follow.id %}
-
-              {% elif g.user.is_following(follow) %}
+              {% if g.user.is_following(follow) %}
                 <form method="POST" action="/follows/remove/{{ follow.id }}">
-                  <button class='dlt-btn'>Unfollow</button>
+                  <button>Unfollow</button>
                 </form>
               {% else %}
                 <form method="POST" action="/follows/add/{{ follow.id }}">
-                  <button class='dlt-btn'>Follow</button>
+                  <button>Follow</button>
                 </form>
               {% endif %}
-        </a>
-      {% endif %}
-    </div>
-    {% endfor %}
+            {% endif %}
+          </a>
+        </div>
+      {% endfor %}
+  {% endif %}
+</div>
 {% endblock %}

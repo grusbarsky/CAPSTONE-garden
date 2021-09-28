@@ -173,22 +173,6 @@ def update_user():
     return render_template('users/edit.html', form=form, user_id=user.id)
 
 
-@app.route('/users/delete', methods=["POST"])
-def delete_user():
-    """Delete current user"""
-
-    if not g.user:
-        flash("Unauthorized Access")
-        return redirect("/")
-
-    # delete user from session
-    del session[current_user]
-
-    db.session.delete(g.user)
-    db.session.commit()
-
-    return redirect("/signup")
-
 @app.route('/users/<int:user_id>')
 def user_profile(user_id):
     """Redirect to any users profile"""
@@ -395,7 +379,7 @@ def garden_details(garden_id):
 
 @app.route('/gardens/<int:garden_id>/delete', methods=["GET", "POST"])
 def delete_garden(garden_id):
-    """delete a users saved garden"""
+    """delete a users garden"""
 
     if not g.user:
         flash("Access Unauthorized")
@@ -430,7 +414,7 @@ def save_gardens(garden_id):
 
 @app.route('/gardens/<int:garden_id>/delete-save')
 def delete_saved_gardens(garden_id):
-    """save another users garden for later inspiration"""
+    """delete another users garden for later inspiration"""
 
     if not g.user:
         flash("Access Unauthorized")

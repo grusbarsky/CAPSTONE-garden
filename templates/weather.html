@@ -24,7 +24,11 @@
     </div>
   </div>
 
-<h2 class=weather-subheader>Weather Forecast</h2>
+  {% if api_results.forecast.forecastday == [] %}
+    <h4>Sorry, the weather application encountered a problem. Please check back later</h4>
+  {% else %}
+  <h2 class=weather-subheader>Weather Forecast</h2>
+<br>
     <div class=forecast-container>
       <div class="container">
         <div class="widget">
@@ -41,7 +45,7 @@
             </div>
             <div class='temp weather-details'>Max: {{api_results.forecast.forecastday[1].day.maxtemp_f}}° F</div>
             <div class='temp weather-details'>Min: {{api_results.forecast.forecastday[1].day.mintemp_f}}° F</div>
-            <div class="humidity weather-details">Humidity: {{api_results.forecast.forecastday[2].day.avghumidity}}%</div>
+            <div class="humidity weather-details">Humidity: {{api_results.forecast.forecastday[1].day.avghumidity}}%</div>
             <div class='weather-details'>Chance of Rain: {{api_results.forecast.forecastday[1].day.daily_chance_of_rain}}%</div>
             <div class='weather-details'>Total Precipitation: {{api_results.forecast.forecastday[1].day.totalprecip_in}} inches</div>
             <div class='weather-details'>Chance of Snow: {{api_results.forecast.forecastday[1].day.daily_chance_of_snow}}%</div>
@@ -76,6 +80,7 @@
         </div>
       </div>
     </div>
+  {% endif %}
 </div>
 
 

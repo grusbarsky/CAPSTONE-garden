@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-  <br>
+  <div>
     <h2>My Gardens</h2>
 
-    <div class='plant-search=form'>
+    <div class='plant-search-form'>
       <form method="POST" id="plant_search_form">
         {{ form.hidden_tag() }}
   
@@ -16,8 +16,9 @@
         <button href="/gardens/create">Add</button>
       </form>
     </div>
-    <br>
-    <br>
+    {% if gardens.count() == 0 %}
+      <h3 class='sorry'>Sorry, no gardens to show</h3>
+    {% else %}
     <div class=plant-container>
       {% for garden in gardens %}
       <div class="plant-card">
@@ -38,6 +39,9 @@
           </a>
       </div>
       {% endfor %}
+    {% endif %}
     </div>
+
+  </div>
 
 {% endblock %}

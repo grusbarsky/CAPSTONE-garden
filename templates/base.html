@@ -3,8 +3,6 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="static/gardens.js"></script>
 </head>
 <body>
 <!-- nav bar -->
@@ -39,15 +37,18 @@
             <br>
             <form method="POST" id="global_search_form" action='/search' method='GET'>
               <input value='' type="text" id="global-search" name="global-search" placeholder='Search...'>
-              <select id="search" name="options" form="global_search_form">
-                <option value="Plants">Plants</option>
-                <option value="Users">Users</option>
-              </select>
-              <button type='submit' href="/search">Search</button>
+              <div class='dropdown' id='home-dropdown'>
+                <div class="custom-select" style="width:100px;">
+                  <select name="options" form="global_search_form">
+                    <option value="Plants">Plants</option>
+                    <option value="Users">Users</option>
+                  </select>        
+                </div>
+              </div>   
+              <button type='submit' href="/search">Search</button>  
             </form>
           {% endif %}
         </nav>
-
   <div class='body-contents'>
     <div class="container">
       {% for category, message in get_flashed_messages(with_categories=True) %}
@@ -56,5 +57,6 @@
     {% block content %}
     {% endblock %}
   </div>
+  <script src="/static/gardens.js"></script>
 </body>
 </html>
