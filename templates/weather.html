@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<br>
-<br>
-<div class='weather-container'>
-    <h1 id='weather-header'>Weather for {{api_results.location.name}}, {{api_results.location.region}}</h1>
+<div>
+  <div class='weather-container'>
+    <br>
+  <br>
+    <h2 id='weather-header'>Weather for {{api_results.location.name}}, {{api_results.location.region}}</h1>
 <br>
 <br>
 <div class="curr-container">
@@ -83,5 +84,6 @@
   {% endif %}
 </div>
 
+</div>
 
 {% endblock %}
