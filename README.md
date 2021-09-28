@@ -11,18 +11,17 @@ Virtual Garden is a web application that allows a user access to useful informat
 
 ### Plants
 
-<img width="1440" alt="Screen Shot 2021-08-17 at 9 14 15 AM" src="https://user-images.githubusercontent.com/62483491/129747382-71f7585c-f59f-44b2-966f-6711bfdade94.png">
+<img width="1440" alt="Screen Shot 2021-09-28 at 11 49 07 AM" src="https://user-images.githubusercontent.com/62483491/135122281-aa216916-f8c9-4d9d-84f4-4dd321d8b8ce.png">
 
-<img width="1440" alt="Screen Shot 2021-08-17 at 9 37 59 AM" src="https://user-images.githubusercontent.com/62483491/129747279-4ce27ec5-92e0-4331-a81e-6bade4fa5b5d.png">
-
+<img width="1440" alt="Screen Shot 2021-09-28 at 11 49 20 AM" src="https://user-images.githubusercontent.com/62483491/135122304-7d9d46b7-ab75-457d-8afd-d964e987b218.png">
 
 ### Gardens
 
-<img width="1440" alt="Screen Shot 2021-08-17 at 9 38 55 AM" src="https://user-images.githubusercontent.com/62483491/129747202-3cf8746b-cfba-498d-8652-156eff18d561.png">
+<img width="1440" alt="Screen Shot 2021-09-28 at 11 50 37 AM" src="https://user-images.githubusercontent.com/62483491/135122252-d169ce3f-32be-487d-ac8c-c33e4549a353.png">
 
 ### Weather
 
-<img width="1440" alt="Screen Shot 2021-08-17 at 9 40 19 AM" src="https://user-images.githubusercontent.com/62483491/129747485-4f631e4b-db03-47d4-b58f-16f6158c8576.png">
+<img width="1439" alt="Screen Shot 2021-09-28 at 11 49 44 AM" src="https://user-images.githubusercontent.com/62483491/135122138-5e885529-491f-49de-94e7-68f8aed7d75c.png">
 
 ## How to download and use locally
 ### Create a virtual environment and activate
