@@ -7,7 +7,7 @@ My completed Capstone Project
 
 ## Description
 
-Virtual Garden is a web application that allows a user access to useful information for growing a variety of plants (description, growing conditions, sowing method) via the OpenFarm API. A User can save these planta for later use or add them to a "Garden" of their creation. A user may also save other users' gardens as inspiration for their own. A local weather tab provides weather to the user to plan when they can garden!
+Virtual Garden is a web application that allows a user access to useful information for growing a variety of plants (description, growing conditions, sowing method) via the OpenFarm API. A User can save these plants for later use or add them to a "Garden" of their creation. A user may also save other users' gardens as inspiration for their own. A local weather tab provides weather for the user to plan when they can garden!
 
 ### Plants
 
